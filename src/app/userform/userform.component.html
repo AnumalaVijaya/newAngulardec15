@@ -1,0 +1,32 @@
+
+<body>
+    <div >
+<form [formGroup]="formuser" (ngSubmit)="onSubmit()">
+<p>{{message}}</p>
+<div class="col-sm-76">
+    <h3>test this form</h3>
+    <label for="email"><b> email: </b></label>
+    <input type="text" style="margin-left: 60px;" placeholder="email" formControlName="email" [pattern]="emailpattern" required>
+    <div style="color: red; " *ngIf="formuser.controls['email'].touched && formuser.controls['email'].invalid">
+        <span *ngIf="formuser.controls['email'].hasError('required')">email is required</span>
+        <span *ngIf="formuser.controls['email'].hasError('pattern')">inavlid email</span>
+    </div>
+   <br>
+    <label for="password"><b> Password: </b></label>
+    <input type="text" style="margin-left:30px;" placeholder="password" formControlName="password" [pattern]="emailpattern" required>
+    <div style="color: red;" *ngIf="formuser.controls['password'].touched && formuser.controls['password'].invalid">
+        <span *ngIf="formuser.controls['password'].hasError('required')">Password is required</span>
+        <span *ngIf="formuser.controls['password'].hasError('pattern')">inavlid password</span>
+    </div>
+   <br>
+   <div>
+    <label for="Subscription"><b> Subscriptions: </b></label>
+    <select>  
+        <option *ngFor="let prod of subscriptions">{{prod.name}} </option>  
+</select> 
+</div>
+<input type="submit" value="submit">
+    </div>
+</form>
+</div></body>
+

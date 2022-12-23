@@ -1,0 +1,35 @@
+
+<body>
+    <div >
+<form [formGroup]="projectform" (ngSubmit)="onSubmit()">
+
+<div class="col-sm-76">
+    <label for="projectName"><b> Project Name: </b></label>
+    <input type="text" style="margin-left:3px;" placeholder="Project Name" formControlName="projectName" [pattern]="namepattern" required>
+    <div style="color: red;" *ngIf="projectform.controls['projectName'].touched && projectform.controls['projectName'].invalid">
+        <span *ngIf="projectform.controls['projectName'].hasError('required')">Project Name is required</span>
+        <span *ngIf="projectform.controls['projectName'].hasError('pattern')">inavlid Project Name</span>
+    </div>
+    <br>
+    <label for="email"><b> email: </b></label>
+    <input type="text" style="margin-left: 60px;" placeholder="email" formControlName="email" [pattern]="emailpattern" required>
+    <div style="color: red; " *ngIf="projectform.controls['email'].touched && projectform.controls['email'].invalid">
+        <span *ngIf="projectform.controls['email'].hasError('required')">email is required</span>
+        <span *ngIf="projectform.controls['email'].hasError('pattern')">inavlid email</span>
+    </div>
+   <br>
+    
+   <br>
+   <div>
+    <label for="projectStatus"><b> Project Status: </b></label>
+    <select>  
+        <option *ngFor="let status of  projectStatus">{{status.name}} </option>  
+</select> 
+</div>
+<input type="submit" value="submit">
+<br>
+<p style="color:red">{{message}}</p>
+    </div>
+</form>
+</div></body>
+
